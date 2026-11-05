@@ -1,0 +1,26 @@
+# Render Blueprint: one web service with a persistent disk for the SQLite database and uploaded documents.
+# A persistent disk requires a paid instance (Starter). After the first deploy, set APP_URL to the
+# service's public https URL (e.g. https://vendorflow.onrender.com) and redeploy.
+services:
+  - type: web
+    name: vendorflow
+    runtime: docker
+    plan: starter
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DATA_DIR
+        value: /data
+      - key: DEMO_MODE
+        value: "true"
+      - key: DEMO_PASSWORD
+        sync: false
+    disk:
+      name: vendorflow-data
+      mountPath: /data
+      sizeGB: 1

@@ -1,0 +1,16 @@
+{
+  "name": "vendorflow",
+  "version": "1.0.0",
+  "description": "Vendor compliance & operations SaaS. Claude does the thinking over MCP; VendorFlow does the work. No AI inside.",
+  "private": true,
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch server.js",
+    "seed": "node --disable-warning=ExperimentalWarning scripts/seed.js",
+    "test": "node --disable-warning=ExperimentalWarning --test --test-concurrency=1 tests/*.test.js"
+  }
+}
